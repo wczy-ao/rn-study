@@ -27,4 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ddb52f",
   },
+  backgroundImage: {
+    opacity: 0.15,
+  },
 });
