@@ -1,23 +1,51 @@
 import React from "react";
 import { StyleSheet, View, TextInput } from "react-native";
-import PrimaryButton from '../components/PrimaryButton';
+import PrimaryButton from "../components/PrimaryButton";
 
 const StartGameScreen = () => {
+  const onChangeText = (value) => {
+    console.log(value);
+  };
   return (
-    <View>
-      <TextInput />
-      <PrimaryButton style={{color:"red"}}>Reset</PrimaryButton>
+    <View style={styles.inputContainer}>
+      <TextInput
+        style={styles.numberInput}
+        keyboardType="phone-pad"
+        autoCapitalize="none"
+        autoCorrect={false}
+        maxLength={2}
+        onChangeText={(text) => onChangeText(text)}
+      />
+      <PrimaryButton style={{ color: "red" }}>Reset</PrimaryButton>
       <PrimaryButton>Confirm</PrimaryButton>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  // Page:{
-  //     width:300,
-  //     height:50,
-  //     fontSize:20
-  // }
+  inputContainer: {
+    marginTop: 100,
+    marginHorizontal: 24,
+    padding: 16,
+    backgroundColor: "#72063c",
+    borderRadius: 8,
+    elevation: 4,
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.25,
+  },
+  numberInput: {
+    height: 50,
+    width: 200,
+    fontSize: 32,
+    borderBottomColor: "#ddb52f",
+    borderBottomWidth: 2,
+    color: "#ddb52f",
+    marginVertical: 8,
+    fontWeight: "bold",
+    textAlign: "center",
+  },
 });
 
 export default StartGameScreen;
