@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, TextInput, Alert } from "react-native";
 import PrimaryButton from "../components/PrimaryButton";
 
-const StartGameScreen = () => {
+const StartGameScreen = ({ onPickNumber }) => {
   const [inpNum, setInpNum] = useState("");
   const onChangeText = (value) => {
     setInpNum(value);
@@ -18,8 +18,9 @@ const StartGameScreen = () => {
         "Number has to be a number between 1 and 99.",
         [{ text: "确认", style: "destructive", onPress: onReset }]
       );
+      return;
     }
-    return;
+    onPickNumber(num);
   };
   return (
     <View style={styles.inputContainer}>
