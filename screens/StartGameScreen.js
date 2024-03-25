@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Alert } from "react-native";
+import { StyleSheet, View, Image, TextInput, Alert } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Colors from "../constants/colors";
 
 const StartGameScreen = ({ onPickNumber }) => {
   const [inpNum, setInpNum] = useState("");
@@ -41,6 +42,18 @@ const StartGameScreen = ({ onPickNumber }) => {
           <PrimaryButton onPress={onConfirm}>Confirm</PrimaryButton>
         </View>
       </View>
+
+      <View style={styles.imageContainer}>
+        <Image
+          resizeMode="contain"
+          fadeDuration={1300}
+          style={styles.image}
+          // source={require('./assets/images/background.png')}
+          source={{
+            uri: "https://doc.houdunren.com/assets/img/logo.b46834f8.png",
+          }}
+        />
+      </View>
     </View>
   );
 };
@@ -74,6 +87,19 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flex: 1,
+  },
+  imageContainer: {
+    width: 300,
+    height: 300,
+    borderRadius: 150,
+    borderWidth: 3,
+    borderColor: Colors.primary800,
+    overflow: "hidden",
+    margin: 36,
+  },
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });
 
