@@ -1,16 +1,24 @@
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { StyleSheet, ImageBackground, SafeAreaView, View } from "react-native";
-
+// import NumberContainer from '../components/game/NumberContainer';
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
 import { LinearGradient } from "expo-linear-gradient";
+
+import { useFonts } from 'expo-font';
 
 import Colors from "./constants/colors";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
 
+
+  const [fontsLoaded] = useFonts({
+    'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold': require('./assets/fonts/OpenSans-Bold.ttf'),
+  });
+  
   function pickedNumberHandler(pickedNumber) {
     setUserNumber(pickedNumber);
   }
