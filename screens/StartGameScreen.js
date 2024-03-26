@@ -46,7 +46,7 @@ function StartGameScreen({ onPickNumber }) {
 
 
   useEffect(() => {
-    useWindowDimensions.addEventListener("change",()=>{
+    Dimensions.addEventListener("change",()=>{
       console.log(1)
     })
   }, [])
