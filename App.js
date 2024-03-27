@@ -1,44 +1,45 @@
-import { StatusBar } from "expo-status-bar";
+import "react-native-gesture-handler";
+
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator} from "@react-navigation/native-stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Ionicons,AntDesign } from "@expo/vector-icons";
 
-import MealDetailScreen from "./screens/MealDetailScreen";
-import CategoriesScreen from "./screens/CategoriesScreen";
-// import Test from "./screens/Test";
-import MealsOverviewScreen from "./screens/MealsOverviewScreen";
-
-const Stack = createNativeStackNavigator();
+import WelcomeScreen from "./screens/WelcomeScreen/";
+import UserScreen from "./screens/UserScreen";
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
-    <>
-      <StatusBar style="dark" />
-      <NavigationContainer>
-        <Stack.Navigator
-          screenOptions={{
-            headerStyle: { backgroundColor: "#351401" },
-            headerTintColor: "white",
-            contentStyle: { backgroundColor: "#3f2f25" },
+    <NavigationContainer>
+      <Drawer.Navigator
+        screenOptions={{
+          headerStyle: { backgroundColor: "#3c0a6b" },
+          headerTintColor: "white",
+          tabBarActiveTintColor: "#3c0a6b",
+        }}
+      >
+        <Drawer.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <AntDesign name="clockcircleo" size={24} color="black" />
+            ),
           }}
-        >
-          <Stack.Screen
-            name="种类"
-            // options 优先级高于name
-            // options={{
-            //   title: "8888", 
-            // }}
-            component={CategoriesScreen}
-          />
-          <Stack.Screen name="测试" component={MealsOverviewScreen} />
-          <Stack.Screen name="MealDetail" component={MealDetailScreen} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </>
+        />
+        <Drawer.Screen
+          name="User"
+          component={UserScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Ionicons name="person" color={color} size={size} />
+            ),
+          }}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {},
-});
-
+const styles = StyleSheet.create({});
